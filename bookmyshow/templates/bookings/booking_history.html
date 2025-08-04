@@ -1,0 +1,19 @@
+<!-- templates/bookings/booking_history.html -->
+{% extends 'base.html' %}
+{% block content %}
+  <h2>My Booking History</h2>
+  <ul>
+    {% for booking in bookings %}
+    <li>
+      {{ booking.show.movie.title }} — {{ booking.show.start_time|date:"M d, Y H:i" }}<br>
+      Seats:
+      {% for seat in booking.seats.all %}
+        {{ seat.row }}{{ seat.number }}{% if not forloop.last %}, {% endif %}
+      {% endfor %}
+      — ₹{{ booking.total_price }}
+    </li>
+    {% empty %}
+    <li>You have not made any bookings yet.</li>
+    {% endfor %}
+  </ul>
+{% endblock %}

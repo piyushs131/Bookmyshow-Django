@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Your Cart</h2>
+<ul>
+  {% for b in bookings %}
+    <li>
+      {% if b.movie %}
+        Movie: {{ b.movie.title }}
+      {% else %}
+        Event: {{ b.event.title }}
+      {% endif %}
+      – Quantity: {{ b.quantity }} – Price: $
+      {% if b.movie %}{{ b.movie.price }}{% else %}{{ b.event.price }}{% endif %}
+      <form action="{% url 'remove_booking' b.id %}" method="post" style="display:inline;">
+        {% csrf_token %}
+        <button type="submit">Remove</button>
+      </form>
+    </li>
+  {% empty %}
+    <li>No items in cart.</li>
+  {% endfor %}
+</ul>
+<a href="{% url 'checkout' %}">Proceed to Checkout</a>
+{% endblock %}

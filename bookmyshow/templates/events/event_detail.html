@@ -1,0 +1,10 @@
+<!-- templates/events/event_detail.html -->
+{% extends 'base.html' %}
+{% block content %}
+  <h2>{{ event.title }}</h2>
+  <p><strong>Date & Time:</strong> {{ event.date|date:"M d, Y H:i" }}</p>
+  <p><strong>Venue:</strong> {{ event.venue }}</p>
+  <p>{{ event.description }}</p>
+  <p><strong>Price:</strong> ₹{{ event.price }}</p>
+  <a href="{% url 'add_booking_event' event.id %}">Book Now</a>
+{% endblock %}

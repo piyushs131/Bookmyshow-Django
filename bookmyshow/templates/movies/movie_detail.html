@@ -1,0 +1,20 @@
+<!-- templates/movies/movie_detail.html -->
+{% extends 'base.html' %}
+{% block content %}
+  <h2>{{ movie.title }}</h2>
+  <p><strong>Release Date:</strong> {{ movie.release_date|date:"M d, Y" }}</p>
+  <p><strong>Duration:</strong> {{ movie.duration }} minutes</p>
+  <p><strong>Language:</strong> {{ movie.language }}</p>
+  <p>{{ movie.description }}</p>
+  <h3>Book Show</h3>
+  <ul>
+    {% for show in movie.shows.all %}
+    <li>
+      {{ show.start_time|date:"M d, Y H:i" }} at {{ show.screen.name }}
+      <a href="{% url 'book_show' show.id %}">Book Now</a>
+    </li>
+    {% empty %}
+    <li>No showtimes available.</li>
+    {% endfor %}
+  </ul>
+{% endblock %}

@@ -1,0 +1,14 @@
+<!-- templates/movies/movie_list.html -->
+{% extends "base.html" %}
+{% block content %}
+<h2>Movies</h2>
+<ul>
+  {% for movie in movies %}
+    <li>
+      <a href="{% url 'movie_detail' movie.pk %}">
+        {{ movie.title }}
+      </a> - ${{ movie.price }}
+    </li>
+  {% endfor %}
+</ul>
+{% endblock %}

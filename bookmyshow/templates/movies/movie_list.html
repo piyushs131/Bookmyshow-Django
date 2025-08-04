@@ -1,0 +1,19 @@
+<!-- templates/movies/movie_list.html -->
+{% extends 'base.html' %}
+{% block content %}
+  <h2>Movies</h2>
+  <form method="get" action="{% url 'movie_search_results' %}">
+    <input type="text" name="q" placeholder="Search movies..." value="{{ request.GET.q }}">
+    <button type="submit">Search</button>
+  </form>
+  <ul>
+    {% for movie in movies %}
+    <li>
+      <a href="{% url 'movie_detail' movie.id %}">{{ movie.title }}</a> —
+      {{ movie.release_date|date:"Y" }} | {{ movie.language }}
+    </li>
+    {% empty %}
+    <li>No movies found.</li>
+    {% endfor %}
+  </ul>
+{% endblock %}

@@ -1,0 +1,13 @@
+<!-- templates/events/event_detail.html -->
+{% extends "base.html" %}
+{% block content %}
+<h2>{{ event.title }}</h2>
+<p>Date & Time: {{ event.date }}</p>
+<p>Venue: {{ event.venue }}</p>
+<p>{{ event.description }}</p>
+<p>Price: ${{ event.price }}</p>
+<form action="{% url 'add_booking_event' event.pk %}" method="post">
+  {% csrf_token %}
+  <button type="submit">Book Event</button>
+</form>
+{% endblock %}

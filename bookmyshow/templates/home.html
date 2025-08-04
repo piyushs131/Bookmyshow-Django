@@ -1,0 +1,29 @@
+<!-- templates/home.html -->
+{% extends 'base.html' %}
+{% block content %}
+  <h1>Welcome to BookMyShow Clone</h1>
+  <section>
+    <h2>Now Showing</h2>
+    <ul>
+      {% for movie in movies %}
+      <li>
+        <a href="{% url 'movie_detail' movie.id %}">{{ movie.title }}</a>
+      </li>
+      {% empty %}
+      <li>No movies available.</li>
+      {% endfor %}
+    </ul>
+  </section>
+  <section>
+    <h2>Upcoming Events</h2>
+    <ul>
+      {% for event in events %}
+      <li>
+        <a href="{% url 'event_detail' event.id %}">{{ event.title }}</a> — {{ event.date|date:"M d, Y" }}
+      </li>
+      {% empty %}
+      <li>No events scheduled.</li>
+      {% endfor %}
+    </ul>
+  </section>
+{% endblock %}

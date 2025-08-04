@@ -1,0 +1,11 @@
+<!-- templates/admin/dashboard.html -->
+{% extends 'base.html' %}
+{% block content %}
+  <h2>Admin Dashboard</h2>
+  <ul>
+    <li><a href="{% url 'admin:bookmyshow_app_movie_changelist' %}">Manage Movies</a></li>
+    <li><a href="{% url 'admin:bookmyshow_app_show_changelist' %}">Manage Shows</a></li>
+    <li><a href="{% url 'admin:bookmyshow_app_booking_changelist' %}">View Bookings</a></li>
+    <li><a href="{% url 'admin:bookmyshow_app_event_changelist' %}">Manage Events</a></li>
+  </ul>
+{% endblock %}

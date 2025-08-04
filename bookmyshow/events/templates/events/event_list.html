@@ -1,0 +1,14 @@
+<!-- templates/events/event_list.html -->
+{% extends "base.html" %}
+{% block content %}
+<h2>Events</h2>
+<ul>
+  {% for event in events %}
+    <li>
+      <a href="{% url 'event_detail' event.pk %}">
+        {{ event.title }}
+      </a> on {{ event.date|date:"Y-m-d H:i" }} - ${{ event.price }}
+    </li>
+  {% endfor %}
+</ul>
+{% endblock %}
