@@ -18,16 +18,6 @@ A fully functional Django-based clone of BookMyShow — India's top platform for
 
 ---
 
-## Features
-
- * User Authentication (Login, Register, Logout)
- * Movie Listings with images, descriptions, show timings
- * Event Listings for theater, comedy shows, etc.
- * Seat Booking system with dynamic layout
- * Review System for movies and events
- * Admin Panel to manage all data
-
-
 ## Installation Steps
 
 1. Clone the Repository
